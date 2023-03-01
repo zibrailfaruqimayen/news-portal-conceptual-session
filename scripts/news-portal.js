@@ -1,3 +1,5 @@
+let fetchData = [];
+
 const fetchCategories = () => {
   fetch("https://openapi.programming-hero.com/api/news/categories")
     .then((res) => res.json())
@@ -28,7 +30,10 @@ const fetchCategoryNews = (category_id, category_name) => {
   const url = ` https://openapi.programming-hero.com/api/news/category/${category_id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => showAllNews(data.data, category_name));
+    .then((data) => {
+      fetchData = data.data;
+      showAllNews(data.data, category_name);
+    });
 };
 
 const showAllNews = (data, category_name) => {
@@ -136,3 +141,12 @@ const showNewsDetail = (newsDetail) => {
 };
 
 //  ? - ternary operator
+
+// show trending news
+const showTrending = () => {
+  const trendingNews = fetchData.filter(
+    (singleData) => singleData.others_info.is_trending === true
+  );
+  const category_name = document.getElementById("category-name").innerText;
+  showAllNews(trendingNews, category_name);
+};
