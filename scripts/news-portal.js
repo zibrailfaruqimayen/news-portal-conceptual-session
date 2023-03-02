@@ -75,7 +75,8 @@ const showAllNews = (data, category_name) => {
         <p class="m-0 p-2">${total_view ? total_view : "not available"}</p>
         </div>
       <div class="d-flex gap-2 align-items-center">
-        <i class="fas fa-star"></i>
+         
+         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
@@ -181,3 +182,15 @@ const showTodaysPick = () => {
 
 // optional
 // Generate stars
+// ${generateStars(rating.number)}
+
+// const generateStars = (rating) => {
+//   let ratingHTML = "";
+//   for (let i = 1; i <= Math.floor(rating); i++) {
+//     ratingHTML += `<i class="fas fa-star"></i>`;
+//   }
+//   if (rating - Math.floor(rating) > 0) {
+//     ratingHTML += `<i class="fas fa-star-half"></i>`;
+//   }
+//   return ratingHTML;
+// };
