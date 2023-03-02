@@ -45,7 +45,8 @@ const showAllNews = (data, category_name) => {
   newsContainer.innerHTML = "";
 
   data.forEach((singleNews) => {
-    const { _id, image_url, title, details, author, total_view } = singleNews;
+    const { _id, image_url, title, details, author, total_view, rating } =
+      singleNews;
     // newsContainer.innerHTML+=``
     const card = document.createElement("div");
     card.classList.add("card", "mb-3");
@@ -73,8 +74,13 @@ const showAllNews = (data, category_name) => {
         <i class="fas fa-eye"></i>
         <p class="m-0 p-2">${total_view ? total_view : "not available"}</p>
         </div>
-      <div class="d-flex align-items-center">
+      <div class="d-flex gap-2 align-items-center">
         <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half"></i>
+        <p class="m-0">${rating.number}</p>
         </div>
         <div class="d-flex align-items-center">
         
@@ -98,8 +104,16 @@ const fetchNewsDetail = (news_id) => {
 
 const showNewsDetail = (newsDetail) => {
   //
-  const { _id, image_url, title, details, author, total_view, others_info } =
-    newsDetail;
+  const {
+    _id,
+    image_url,
+    title,
+    details,
+    author,
+    total_view,
+    others_info,
+    rating,
+  } = newsDetail;
 
   document.getElementById("modal-body").innerHTML = `
 <div class="card mb-3">
@@ -131,6 +145,11 @@ const showNewsDetail = (newsDetail) => {
         </div>
       <div class="d-flex align-items-center">
         <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half"></i>
+        <p class="m-0">${rating.number}</p>
         </div>
         
     </div>
@@ -150,3 +169,6 @@ const showTrending = () => {
   const category_name = document.getElementById("category-name").innerText;
   showAllNews(trendingNews, category_name);
 };
+
+// optional
+// Generate stars
