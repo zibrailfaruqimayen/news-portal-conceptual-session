@@ -170,5 +170,14 @@ const showTrending = () => {
   showAllNews(trendingNews, category_name);
 };
 
+// show to days pick operator
+const showTodaysPick = () => {
+  const toDaysPick = fetchData.filter(
+    (singleData) => singleData.others_info.is_todays_pick === false
+  );
+  const category_name = document.getElementById("category-name").innerText;
+  showAllNews(toDaysPick, category_name);
+};
+
 // optional
 // Generate stars
